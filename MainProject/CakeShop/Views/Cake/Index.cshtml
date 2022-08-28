@@ -1,0 +1,112 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using System.Text.RegularExpressions
+@using System.Text
+@model IEnumerable<CakeShop.Models.CakeWithTypeModel>
+@inject IAuthorizationService AuthorizationService
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista ciast</h1>
+
+<p>
+    <a asp-action="Create">Utwórz nowe ciasto</a>
+</p>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Rozmiar
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+                Rodzaj
+            </th>
+            <th>Zdjęcie</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.ImageUrl)" width="150" />
+                </td>
+                @using (Html.BeginForm("AddToCart", "Cake", FormMethod.Post))
+                {
+                    <td>
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <input type="submit" value="Dodaj do koszyka" />
+                    </td>
+                }
+                @if (User.IsInRole("Administrator"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+
+</table>
+@if (ViewBag.ConfirmMessage != null)
+{
+    <!-- Button trigger modal -->
+    <button id="modalcake" type="button" hidden="hidden" class="btn btn-primary" data-toggle="modal" data-target="#confirmCake">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmCake" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ciasto dodane do koszyka</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @ViewBag.ConfirmMessage
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Zamknij</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            document.getElementById("modalcake").click();
+        };
+    </script>
+}
+

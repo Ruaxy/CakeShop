@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form method="post" action="https://secure.snd.payu.com/api/v2_1/orders">
+    @*<input type="hidden" name="continueUrl" value="http://shop.url/continue">
+        <input type="hidden" name="currencyCode" value="PLN">
+        <input type="hidden" name="customerIp" value="123.123.123.123">
+        <input type="hidden" name="description" value="Opis zamówienia">
+        <input type="hidden" name="merchantPosId" value="434989">
+        <input type="hidden" name="notifyUrl" value="http://shop.url/notify">
+        <input type="hidden" name="products[0].name" value="Product 1">
+        <input type="hidden" name="products[0].quantity" value="1">
+        <input type="hidden" name="products[0].unitPrice" value="1000">
+        <input type="hidden" name="totalAmount" value="1000">
+        <input type="hidden" name="OpenPayu-Signature" value="sender=434989; algorithm=SHA-256;signature=876cfbe34ef859b7ccf1ba0167262a590dfa9035f9b27775da9d8f59dc9dd711">*@
+    <input type="hidden" name="customerIp" value="123.123.123.123">
+    <input type="hidden" name="merchantPosId" value="434989">
+    <input type="hidden" name="description" value="Opis zamówienia">
+    <input type="hidden" name="totalAmount" value="1000">
+    <input type="hidden" name="currencyCode" value="PLN">
+    <input type="hidden" name="products[0].name" value="Produkt 1">
+    <input type="hidden" name="products[0].unitPrice" value="1000">
+    <input type="hidden" name="products[0].quantity" value="1">
+    <input type="hidden" name="notifyUrl" value="http://shop.url/notify">
+    <input type="hidden" name="continueUrl" value="http://shop.url/continue">
+    <input type="hidden" name="OpenPayu-Signature" value="sender=434989;algorithm=SHA-256;signature=876cfbe34ef859b7ccf1ba0167262a590dfa9035f9b27775da9d8f59dc9dd711">
+    <button type="submit" formtarget="_blank">Pay with PayU</button>
+</form>
+<form asp-action="sha256_hash">
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-action="Index">Back to List</a>
+</form>

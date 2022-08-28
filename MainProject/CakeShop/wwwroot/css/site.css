@@ -1,0 +1,173 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+nav.navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 {
+    background-color: aqua;
+    color: antiquewhite;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #ff6a00
+    
+}
+
+    /* mouse over link */
+    a:hover {
+        color: rgba(158, 33, 35, 0.5);
+    }
+
+.btn-primary {
+    color: #fff;
+    background-color: rgba(158, 33, 35, 0.5);
+    border-color: rgba(158, 33, 35, 0.5);
+}
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #ff6a00;
+        border-color: #ff6a00;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.navbar-custom {
+    background-color: rgba(158, 33, 35, 0.5);
+    color: #ffffff;
+}
+
+    /* Modify brand and text color */
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-text {
+        color: #ffffff;
+    }
+
+a.card-link {
+    color: #ff6a00
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: rgba(227, 216, 193, 0.5);
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+    .styled-table thead tr {
+        background-color: rgba(158, 33, 35, 0.5);
+        color: #ffffff;
+        text-align: left;
+    }
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: rgba(255, 254, 252, 0.5);
+        }
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid rgba(158, 33, 35, 0.5);
+        }
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: rgba(158, 33, 35, 0.5);
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+a.page-link {
+    color: rgba(158, 33, 35, 0.5);
+    background-color: rgba(166, 106, 107, 0.5);
+}
+a.page-link:active {
+    color: rgba(227, 216, 193, 0.5);
+}
+
+    a.page-link:hover {
+        color: #ff6a00;
+        background-color: rgba(255, 254, 252, 0.5);
+    }
+a.my-class:visited {
+    color: #ff6a00
+}
+
+div.card {
+    background-color: rgba(255, 254, 252, 0.5);
+}
+
+
+.dl-horizontal dt.fullWidth {
+    width: 100%;
+    text-overflow: unset;
+    white-space: initial;
+    text-align: left;
+}

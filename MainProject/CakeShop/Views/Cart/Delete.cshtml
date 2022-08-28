@@ -1,0 +1,33 @@
+﻿@model CakeShop.Models.CartModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Usuwanie</h1>
+
+<h3>Na pewno chcesz usunąć wybrany element z koszyka?</h3>
+<div>
+    @*<h4>CartModel</h4>*@
+    <!--<hr />
+    <dl class="dl-horizontal">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CakeId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CakeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserIdentification)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserIdentification)
+        </dd>
+    </dl>-->
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Powrót do listy</a>
+    </form>
+</div>

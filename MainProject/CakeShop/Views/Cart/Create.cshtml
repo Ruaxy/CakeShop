@@ -1,0 +1,38 @@
+﻿@model CakeShop.Models.CartModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Kreator ciasta w koszyku</h1>
+
+@*<h4>CartModel</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CakeId" class="control-label">ID ciasta</label>
+                <input asp-for="CakeId" class="form-control" />
+                <span asp-validation-for="CakeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserIdentification" class="control-label">Identyfikator użytkownika</label>
+                <input asp-for="UserIdentification" class="form-control" />
+                <span asp-validation-for="UserIdentification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Powrót do koszyka</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,28 @@
+﻿
+@{
+    bool isactive = ViewBag.isPaymentActive;
+    string hash = ViewBag.hashToPayment;
+    string totalamount = ViewBag.totalAmount;
+}
+@if (isactive)
+{ 
+    <form method="post" action="https://secure.snd.payu.com/api/v2_1/orders">
+        <input type="hidden" name="customerIp" value="123.123.123.123">
+        <input type="hidden" name="merchantPosId" value="434989">
+        <input type="hidden" name="description" value="Opis zamówienia">
+        <input id="totalPrice" type="hidden" name="totalAmount" value=@totalamount>
+        <input type="hidden" name="currencyCode" value="PLN">
+        <input type="hidden" name="products[0].name" value="ciasto">
+        <input type="hidden" name="products[0].unitPrice" value="1000">
+        <input type="hidden" name="products[0].quantity" value="1">
+        <input type="hidden" name="notifyUrl" value="https://localhost:44313/">
+        <input type="hidden" name="continueUrl" value="https://localhost:44313/Cart/FinishedPayment">
+        <input id="signature" type="hidden" name="OpenPayu-Signature" value="sender=434989;algorithm=SHA-256;signature=@hash" >
+        <button onsubmit="alertClick()" id="signature" style="border: 0px; height: 50px; width: -webkit-fill-available; max-width: 290px; background: url('http://static.payu.com/pl/standard/partners/buttons/payu_account_button_long_03.png'); background-repeat: no-repeat; cursor: pointer; " type="submit" formtarget="_blank"></button>
+    </form>
+
+}
+else
+{
+                <div>Not found</div>
+}

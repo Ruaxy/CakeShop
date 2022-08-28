@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Main page";
+}
+
+
+@using System.Security.Claims;
+
+
+    <div class="text-center">
+        <h1 class="display-4">
+            Cukiernia KarmeLove
+            @* Hello @User.Identities.First(
+u => u.IsAuthenticated &&
+u.HasClaim(c => c.Type == ClaimTypes.Name)).FindFirst(ClaimTypes.Name).Value*@
+</h1>
+</div>
+
+<div class="card-group">
+  <div class="card">
+    <img href="Cake" class="card-img-top" src="images/offer.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title" href="Cake">Lista ciast</h5>
+      <p class="card-text">Lista dostępnych ciast.</p>
+      <a href="Cake" class="card-link">Do ciast</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="images/price_list.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Koszyk</h5>
+      <p class="card-text">Twoje dodane ciasta.</p>
+      <a href="Cart" class="card-link">Do koszyka</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="images/contact.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Polityka prywatności</h5>
+      <a href="Home/Privacy" class="card-link">Do polityki</a>
+    </div>
+  </div>
+ </div>

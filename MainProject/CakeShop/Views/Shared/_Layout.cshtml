@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CakeShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-custom border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="/">CakeShop</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link navbar-text fas fa-home" href ="/">Strona główna</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-text fas fa-list" asp-area="" asp-controller="Cake" asp-action="Index">Lista ciast</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-text fas fa-cart-arrow-down" asp-area="" asp-controller="Cart" asp-action="Index">Koszyk</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link navbar-text fas fa-file-alt" asp-area="" asp-controller="Home" asp-action="Privacy">Polityka prywatności</a>
+                        </li>*@
+                        @if (!(User.Identity.IsAuthenticated))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link navbar-text fab fa-centercode" asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        @if (!(User.Identity.IsAuthenticated))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link navbar-text fas fa-registered" asp-area="Identity" asp-controller="Account" asp-action="Register">Zarejestruj się</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link navbar-text fas fa-sign-out-alt" asp-area="Identity" asp-controller="Account" asp-action="Logout">Wyloguj się</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link navbar-text fas fas fa-money-check-alt" asp-area="" asp-controller="Order" asp-action="Index">Zamówienia</a>
+                            </li>
+                        }
+                        <li class="nav-item" style=" float: right; margin-left: auto;">
+                            <a class="nav-link navbar-text" asp-area="areaAreaRoute" asp-controller="Manage" asp-action="Index">@User.Identity.Name</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - CakeShop - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="card-link">Polityka prywatności</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

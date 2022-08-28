@@ -1,0 +1,22 @@
+JarIndex-Version: 1.0
+
+hawtio.war
+META-INF
+WEB-INF
+WEB-INF/classes
+WEB-INF/lib
+css
+fonts
+img
+img/icons
+img/icons/activemq
+img/icons/camel
+img/icons/camel/endpoints
+img/icons/osgi
+img/icons/quartz
+js
+404.html
+hawtconfig.json
+index.html
+login.html
+
