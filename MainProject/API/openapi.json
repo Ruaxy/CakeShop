@@ -1,0 +1,518 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is a CakeShop server.   `special-key` to test the authorization filters.",
+    "version": "1.0.2",
+    "title": "Swagger Cakes"
+  },
+  "tags": [
+    {
+      "name": "cake",
+      "description": "Everything about offered cakes",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "order",
+      "description": "Access to orders"
+    },
+    {
+      "name": "JWT",
+      "description": "Access to get JWT token"
+    }
+  ],
+  "paths": {
+    "/CakeApi": {
+      "get": {
+        "tags": [
+          "cake"
+        ],
+        "summary": "Get all cakes",
+        "description": "Returns all cakes",
+        "operationId": "getAllCakes",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/Cake"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "cake"
+        ],
+        "summary": "Add a new cake to the store",
+        "description": "",
+        "operationId": "addCake",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Cake"
+        },
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "cake"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Cake"
+        },
+        "responses": {
+          "200": {
+            "description": "Operation Succesful"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Cake not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/CakeApi/{cakeId}": {
+      "get": {
+        "tags": [
+          "cake"
+        ],
+        "summary": "Find cake by ID",
+        "description": "Returns a single cake",
+        "operationId": "getCakeById",
+        "parameters": [
+          {
+            "name": "cakeId",
+            "in": "path",
+            "description": "ID of cake to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cake"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Cake not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "cake"
+        ],
+        "summary": "Deletes a cake",
+        "description": "",
+        "operationId": "deleteCake",
+        "parameters": [
+          {
+            "name": "cakeId",
+            "in": "path",
+            "description": "Cake id to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cake deleted"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Cake not found"
+          }
+        }
+      }
+    },
+    "/OrderApi/{orderId}": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "Find order by id",
+        "description": "Returns a single order",
+        "operationId": "getOrderById",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of order to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Order not found"
+          }
+        }
+      }
+    },
+    "/OrderApi": {
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "summary": "Place an order for a cake",
+        "description": "",
+        "operationId": "placeOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          },
+          "description": "order placed for purchasing the cake",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Order"
+          }
+        }
+      }
+    },
+    "/JWT/Authenticate": {
+      "post": {
+        "tags": [
+          "JWT"
+        ],
+        "summary": "Place user data to receive token",
+        "description": "",
+        "operationId": "Authenticate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateRequest"
+              }
+            }
+          },
+          "description": "user data placed to receive jwt token",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Username or password is incorrect"
+          }
+        }
+      }
+    },
+    "/JWT/RefreshToken": {
+      "post": {
+        "tags": [
+          "JWT"
+        ],
+        "summary": "User refresh token is taken from cookies",
+        "description": "",
+        "operationId": "RefreshToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/refreshToken"
+              }
+            }
+          },
+          "description": "refreshToken taken from users cookies",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "refresh token is invalid"
+          }
+        }
+      }
+    },
+    "/JWT/RevokeToken": {
+      "post": {
+        "tags": [
+          "JWT"
+        ],
+        "summary": "Place user data to revoke token",
+        "description": "",
+        "operationId": "RevokeToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeTokenRequest"
+              }
+            }
+          },
+          "description": "Token provided will be revoked",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Token revoked"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "token invalid"
+          },
+          "404": {
+            "description": "token does not exist"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:44313/API/"
+    }
+  ],
+  "components": {
+    "requestBodies": {
+      "CakeArray": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Cake"
+              }
+            }
+          }
+        },
+        "description": "List of cake object",
+        "required": true
+      },
+      "Cake": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Cake"
+            }
+          }
+        },
+        "description": "Pet object that needs to be added to the store",
+        "required": true
+      }
+    },
+    "schemas": {
+      "Cake": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "typeId": {
+            "type": "integer",
+            "description": "Cake Type",
+            "enum": [
+              "Sernik",
+              "Tarta",
+              "Tort"
+            ]
+          },
+          "ownerSpecification": {
+            "type": "string"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "OrderId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "CakeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "CustomerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Quantity": {
+            "type": "integer"
+          },
+          "OrderDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AuthenticateResponse": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Username": {
+            "type": "string"
+          },
+          "JwtToken": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthenticateRequest": {
+        "type": "object",
+        "properties": {
+          "Username": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string"
+          }
+        }
+      },
+      "refreshToken": {
+        "type": "object",
+        "properties": {
+          "Value": {
+            "type": "string"
+          }
+        }
+      },
+      "RevokeTokenRequest": {
+        "type": "object",
+        "properties": {
+          "Token": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}
