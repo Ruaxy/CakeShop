@@ -6,19 +6,18 @@
 <b> Techstack: </b>
 
 <i>Backend:</i>
-<li>.NetCore 3.1, Entity framework Core</li>
+<li>.NetCore 3.1</li>
 <li>Entity framework Core</li>
 <li>ActiveMQ - Artemis Net Client </li>
 <li> AspNetCore identity</li>
+<li>SQL Server </li>
 <i>Frontend:</i>
 <li>HTML</li>
 <li>CSS</li>
 <li>JavaScript</li>
-<li>HTML</li>
 <li>Razor</li> <br>
-<i>Database:</i> 
-<li>SQL Server </li>
 <br>
+                                                                                                                                               
 # Main project
 In MainProject/CakeShop/ there is everything which is responsible for the main purpose of the app. 
 Although if you want to check how whole app works - you also need to use "API" project - how to make it work below.
